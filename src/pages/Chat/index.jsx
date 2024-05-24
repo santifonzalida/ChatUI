@@ -5,7 +5,7 @@ const Chat = () => {
     return(
         <div className="flex h-screen overflow-hidden">
             <ChatBar />
-            <ChatBody />
+            <ChatBody/>
         </div>
     )
 }

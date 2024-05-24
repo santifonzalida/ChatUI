@@ -49,7 +49,7 @@ const ChatBody = () => {
                 </div>
             </div>
             
-            <ChatFooter />
+            <ChatFooter/>
         </div>
     )
 }
