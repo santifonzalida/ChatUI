@@ -1,11 +1,25 @@
 import { ChatFooter } from "./ChatFooter";
+import { useNavigate } from "react-router";
+import { ChatContext } from "../context";
+import { useContext } from "react";
 
 const ChatBody = () => {
+
+    const contex = useContext(ChatContext);
+    const navigate = useNavigate();
+
+    const handleExit = () => {
+        navigate('/');
+    }
+    
     return (
         <div className="flex-1">
             {/* Chat Header */}
-            <header className="bg-slate-300 p-4 text-gray-700">
-                <h1 className="text-2xl font-semibold">Alice</h1>
+            <header className="flex justify-between bg-slate-300 p-3 text-gray-700">
+                <h1 className="text-2xl font-semibold">Room test dev</h1>
+                <button 
+                    className="rounded-lg bg-orange-200 px-4 py-2 hover:bg-orange-400"
+                    onClick={ handleExit }>Salir</button>
             </header>
 
             <div className="h-screen overflow-y-auto p-4 pb-36">
@@ -28,8 +42,13 @@ const ChatBody = () => {
                     <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" className="w-8 h-8 rounded-full"/>
                     </div>
                 </div>  
-            </div>
 
+                {/* someone is typing */}
+                <div className="fixed">
+                    <p className="font-sm font-light text-gray-500">Someone is typing...</p>
+                </div>
+            </div>
+            
             <ChatFooter />
         </div>
     )
