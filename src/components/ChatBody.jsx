@@ -1,16 +1,17 @@
 import { ChatFooter } from "./ChatFooter";
 import { useNavigate } from "react-router";
 import { ChatContext } from "../context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const ChatBody = () => {
-
-    const contex = useContext(ChatContext);
+    const context = useContext(ChatContext);
     const navigate = useNavigate();
 
-    const handleExit = () => {
-        navigate('/');
-    }
+    useEffect(() => {
+        context.socket.on('response_message', (data) => {
+            console.log('respuestaa de backend: ' + JSON.stringify(data));
+        });
+    }, []);
     
     return (
         <div className="flex-1">
@@ -19,7 +20,7 @@ const ChatBody = () => {
                 <h1 className="text-2xl font-semibold">Room test dev</h1>
                 <button 
                     className="rounded-lg bg-orange-200 px-4 py-2 hover:bg-orange-400"
-                    onClick={ handleExit }>Salir</button>
+                    onClick={ () => navigate('/') }>Salir</button>
             </header>
 
             <div className="h-screen overflow-y-auto p-4 pb-36">
@@ -44,7 +45,7 @@ const ChatBody = () => {
                 </div>  
 
                 {/* someone is typing */}
-                <div className="fixed">
+                <div className="fixed hidden">
                     <p className="font-sm font-light text-gray-500">Someone is typing...</p>
                 </div>
             </div>

@@ -1,21 +1,23 @@
 import { useState, useEffect, createContext } from "react"
-import socketIO from 'socket.io-client';
+import { socket } from '../socket';
 
 export const ChatContext = createContext();
 
 export const ChatProvider = ({ children }) => {
 
-    const socket = socketIO.connect('http://localhost:3001');
+    useEffect(() => {
+        // TODO: Buscar todos los mensajes de la sala
+    },[]);
 
     const [userName, setUserName] = useState('');
     const [someoneIsTyping, setSomeoneIsTyping] = useState([]);
-    const [chats, setChats] = useState([]);
+    const [messages, setMessages] = useState([]);
 
     return (
         <ChatContext.Provider value={{
             socket,
-            chats,
-            setChats,
+            messages,
+            setMessages,
             someoneIsTyping,
             setSomeoneIsTyping,
             userName,
