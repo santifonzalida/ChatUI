@@ -9,7 +9,6 @@ const Home = () => {
     const [userName, setUserName] = useState('');
 
     const handleSubmit = () => {
-        console.log(context.user)
         context.setUser({...context.user, name: userName});
         navigate('/chat');
     }

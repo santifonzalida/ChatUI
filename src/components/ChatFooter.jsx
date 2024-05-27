@@ -24,7 +24,7 @@ const ChatFooter = () => {
     return (
         <>
             {/* Chat Input */}
-            <footer className="bg-white border-t border-gray-300 p-4 absolute bottom-0 w-3/4">
+            <footer className="bg-white border-t border-gray-300 p-4 absolute bottom-0 w-5/6">
                 <div className="flex items-center">
                     <input 
                         type="text" 

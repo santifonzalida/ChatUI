@@ -6,7 +6,7 @@ const ChatBar = () => {
     const context = useContext(ChatContext);
     
     return (
-        <div className="w-1/4 bg-white border-r border-gray-300">
+        <div className="w-1/6 bg-white border-r border-gray-300">
           <header className="p-4 border-b border-gray-300 flex justify-between items-center bg-indigo-600 text-white">
             <h1 className="text-2xl font-semibold">Chat Web</h1>
             <div className="relative">

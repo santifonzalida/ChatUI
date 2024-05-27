@@ -5,18 +5,19 @@ export const ChatContext = createContext();
 
 export const ChatProvider = ({ children }) => {
 
+    const [user, setUser] = useState({name: '', socketId: ''});
+    const [someoneIsTyping, setSomeoneIsTyping] = useState([]);
+    const [messages, setMessages] = useState([]);
+
     useEffect(() => {
-        // TODO: Buscar todos los mensajes de la sala
         fetch('http://localhost:3001/messages/664d544cf9918c5ed4a5de76')
         .then(response => response.json()
         .then(data => {
             setMessages(data);
+            setUser({name:'', socketId: socket.id});
         }));
     },[]);
 
-    const [user, setUser] = useState({name: '', sockedId: socket.id});
-    const [someoneIsTyping, setSomeoneIsTyping] = useState([]);
-    const [messages, setMessages] = useState([]);
 
     return (
         <ChatContext.Provider value={{
