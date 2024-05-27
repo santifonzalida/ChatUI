@@ -6,9 +6,18 @@ const ChatFooter = () => {
     const context = useContext(ChatContext);
 
     const handleSendMessage = () => {
-        if (message.length > 0) {
-            context.socket.emit("create_message",{ message:message, sender_id: context.socket.id, chat_id: '664d544cf9918c5ed4a5de76'});
+        if(message.trim().length == 0) {
+            return;
         }
+        context.socket.emit(
+            "create_message", 
+            { 
+                message:message, 
+                sender_id: context.socket.id, 
+                chat_id: '664d544cf9918c5ed4a5de76',
+                sender_name: context.user.name
+            }
+        );
         setMessage('');
     }
 
